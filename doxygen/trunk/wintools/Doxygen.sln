@@ -1,0 +1,48 @@
+Microsoft Visual Studio Solution File, Format Version 8.00
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Doxygen", "Doxygen.vcproj", "{3B6ECFC1-C5B3-43BE-BB7E-79AACC8D6CC0}"
+	ProjectSection(ProjectDependencies) = postProject
+		{61022300-03DB-44B9-B3F9-2E1F2280A2C2} = {61022300-03DB-44B9-B3F9-2E1F2280A2C2}
+		{A086B63A-48BC-446D-99A4-C93AAE6DA5BA} = {A086B63A-48BC-446D-99A4-C93AAE6DA5BA}
+		{4C2DB5C3-E86D-4A40-847D-29FD969B79C7} = {4C2DB5C3-E86D-4A40-847D-29FD969B79C7}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "libpng", "libpng.vcproj", "{A086B63A-48BC-446D-99A4-C93AAE6DA5BA}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "qtools", "qtools.vcproj", "{4C2DB5C3-E86D-4A40-847D-29FD969B79C7}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "zlib", "zlib.vcproj", "{61022300-03DB-44B9-B3F9-2E1F2280A2C2}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfiguration) = preSolution
+		Debug = Debug
+		Release = Release
+	EndGlobalSection
+	GlobalSection(ProjectConfiguration) = postSolution
+		{3B6ECFC1-C5B3-43BE-BB7E-79AACC8D6CC0}.Debug.ActiveCfg = Debug|Win32
+		{3B6ECFC1-C5B3-43BE-BB7E-79AACC8D6CC0}.Debug.Build.0 = Debug|Win32
+		{3B6ECFC1-C5B3-43BE-BB7E-79AACC8D6CC0}.Release.ActiveCfg = Release|Win32
+		{3B6ECFC1-C5B3-43BE-BB7E-79AACC8D6CC0}.Release.Build.0 = Release|Win32
+		{A086B63A-48BC-446D-99A4-C93AAE6DA5BA}.Debug.ActiveCfg = Debug|Win32
+		{A086B63A-48BC-446D-99A4-C93AAE6DA5BA}.Debug.Build.0 = Debug|Win32
+		{A086B63A-48BC-446D-99A4-C93AAE6DA5BA}.Release.ActiveCfg = Release|Win32
+		{A086B63A-48BC-446D-99A4-C93AAE6DA5BA}.Release.Build.0 = Release|Win32
+		{4C2DB5C3-E86D-4A40-847D-29FD969B79C7}.Debug.ActiveCfg = Debug|Win32
+		{4C2DB5C3-E86D-4A40-847D-29FD969B79C7}.Debug.Build.0 = Debug|Win32
+		{4C2DB5C3-E86D-4A40-847D-29FD969B79C7}.Release.ActiveCfg = Release|Win32
+		{4C2DB5C3-E86D-4A40-847D-29FD969B79C7}.Release.Build.0 = Release|Win32
+		{61022300-03DB-44B9-B3F9-2E1F2280A2C2}.Debug.ActiveCfg = Debug|Win32
+		{61022300-03DB-44B9-B3F9-2E1F2280A2C2}.Debug.Build.0 = Debug|Win32
+		{61022300-03DB-44B9-B3F9-2E1F2280A2C2}.Release.ActiveCfg = Release|Win32
+		{61022300-03DB-44B9-B3F9-2E1F2280A2C2}.Release.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+	EndGlobalSection
+	GlobalSection(ExtensibilityAddIns) = postSolution
+	EndGlobalSection
+EndGlobal
