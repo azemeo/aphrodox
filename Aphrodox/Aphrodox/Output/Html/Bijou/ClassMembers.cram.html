@@ -1,0 +1,302 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>String Members</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<link href="css/bijou.css" rel="stylesheet" type="text/css" />
+<script language="javascript" src="x/x_core.js"></script>
+<script language="javascript" src="x/x_event.js"></script>
+<script language="javascript">
+function setUpClient() {
+	// add listener
+	xAddEventListener(window, 'resize', resizeClient);
+	resizeClient();
+	if (xIE4Up) {
+		xAddEventListener(window, 'scroll', resizeClient);
+	}
+}
+
+function resizeClient() {
+	var header = xGetElementById("header");
+	var client = xGetElementById("client");
+	if (xMoz) {
+		// damn Moz, can't handle DIV scrolls nicely, but fortunately we can use position: fixed
+		header.style.position = "fixed";
+		header.style.top = "0";
+		// BUG: you will mess up the layout if you try to change the font size or anything else
+		// that doesn't generate onresize :-(
+		client.style.marginTop = xHeight(header) + "px";
+	} else if (xIE4Up) {
+		// damn IE, at first DIV overflow=auto works, but somehow when I use table width="100%"
+		// IE removes the scrollbars. Now I have to use this (very) ugly fix. :-(
+		header.style.position = "absolute";
+		header.style.top = document.documentElement.scrollTop;
+		client.style.marginTop = xHeight(header) + "px";
+	}
+	window.status = xHeight(client);
+}
+</script>
+</head>
+<body> 
+<div id="header"> 
+  <div id="innerHeader"> 
+    <p id="runningHead"><img src="img/see_also.gif" width="14" height="14" class="imgSeeAlso" />.NET Framework Class Library</p> 
+    <h1><a name="frlrfsystemstringmemberstopic" id="frlrfsystemstringmemberstopic"></a>String Members</h1> 
+    <h4>See Also </h4> 
+    <p><a href="ms-help://MS.VSCC.2003/MS.MSDNQTR.2003OCT.1033/cpref/html/frlrfsystemstringclasstopic.htm">String Class </a> | <a href="ms-help://MS.VSCC.2003/MS.MSDNQTR.2003OCT.1033/cpref/html/frlrfsystem.htm">System Namespace </a>| <a href="ms-help://MS.VSCC.2003/MS.MSDNQTR.2003OCT.1033/vcmex/html/vcconMCOverview.htm">Managed Extensions for C++ Programming </a></p> 
+  </div> 
+</div> 
+<div id="client"> 
+  <script language="javascript">setUpClient();</script> 
+  <div id="innerClient"> 
+    <p><a href="frlrfsystemstringclasstopic.htm">String overview </a></p> 
+    <h4>Public Constructors </h4> 
+    <table width="100%" cellspacing="0" class="member"> 
+      <tr> 
+        <td width="50%"><img src="img/method.gif" width="16" height="16" /><a href="frlrfsystemstringclassctortopic.htm">String Constructor </a> 
+          <p>Supported by the .NET Compact Framework. </p></td> 
+        <td width="50%">Overloaded. Initializes a new instance of the <strong>String </strong> class. </td> 
+      </tr> 
+    </table> 
+    <h4>Public Fields </h4> 
+    <table width="100%" cellspacing="0" class="member"> 
+      <tr> 
+        <td width="50%"><img alt="public field" src="pubfield.gif" /><img alt="static (Shared in Visual Basic)" src="static.gif" /><a href="frlrfsystemstringclassemptytopic.htm">Empty </a> 
+          <p>Supported by the .NET Compact Framework. </p></td> 
+        <td width="50%">Represents the empty string. This field is read-only. </td> 
+      </tr> 
+    </table> 
+    <h4>Public Properties </h4> 
+    <table width="100%" cellspacing="0" class="member"> 
+      <tr> 
+        <td width="50%"><img alt="public property" src="pubproperty.gif" /><a href="frlrfsystemstringclasscharstopic.htm">Chars </a></td> 
+        <td width="50%">Gets the character at a specified character position in this instance.
+          <p>In C#, this property is the indexer for the <strong>String </strong> class. </p></td> 
+      </tr> 
+      <tr> 
+        <td width="50%"><img alt="public property" src="pubproperty.gif" /><a href="frlrfsystemstringclasslengthtopic.htm">Length </a> 
+          <p>Supported by the .NET Compact Framework. </p></td> 
+        <td width="50%">Gets the number of characters in this instance. </td> 
+      </tr> 
+    </table> 
+    <h4>Public Methods </h4> 
+    <table width="100%" cellspacing="0" class="member"> 
+      <tr> 
+        <td width="50%"><img alt="public method" src="pubmethod.gif" /><a href="frlrfsystemstringclassclonetopic.htm">Clone </a> 
+          <p>Supported by the .NET Compact Framework. </p></td> 
+        <td width="50%">Returns a reference to this instance of <strong>String </strong>. </td> 
+      </tr> 
+      <tr> 
+        <td width="50%"><img alt="public method" src="pubmethod.gif" /><img alt="static (Shared in Visual Basic)" src="static.gif" /><a href="frlrfsystemstringclasscomparetopic.htm">Compare </a> 
+          <p>Supported by the .NET Compact Framework. </p></td> 
+        <td width="50%">Overloaded. Compares two specified <strong>String </strong> objects. </td> 
+      </tr> 
+      <tr> 
+        <td width="50%"><img alt="public method" src="pubmethod.gif" /><img alt="static (Shared in Visual Basic)" src="static.gif" /><a href="frlrfsystemstringclasscompareordinaltopic.htm">CompareOrdinal </a> 
+          <p>Supported by the .NET Compact Framework. </p></td> 
+        <td width="50%">Overloaded. Compares two <strong>String </strong> objects by evaluating the numeric values of the corresponding <a href="frlrfsystemcharclasstopic.htm">Char </a> objects in each string. </td> 
+      </tr> 
+      <tr> 
+        <td width="50%"><img alt="public method" src="pubmethod.gif" /><a href="frlrfsystemstringclasscomparetotopic.htm">CompareTo </a> 
+          <p>Supported by the .NET Compact Framework. </p></td> 
+        <td width="50%">Overloaded. Compares this instance with a specified object. </td> 
+      </tr> 
+      <tr> 
+        <td width="50%"><img alt="public method" src="pubmethod.gif" /><img alt="static (Shared in Visual Basic)" src="static.gif" /><a href="frlrfsystemstringclassconcattopic.htm">Concat </a> 
+          <p>Supported by the .NET Compact Framework. </p></td> 
+        <td width="50%">Overloaded. Concatenates one or more instances of <strong>String </strong>, or the <strong>String </strong> representations of the values of one or more instances of <a href="frlrfsystemobjectclasstopic.htm">Object </a>. </td> 
+      </tr> 
+      <tr> 
+        <td width="50%"><img alt="public method" src="pubmethod.gif" /><img alt="static (Shared in Visual Basic)" src="static.gif" /><a href="frlrfsystemstringclasscopytopic.htm">Copy </a> 
+          <p>Supported by the .NET Compact Framework. </p></td> 
+        <td width="50%">Creates a new instance of <strong>String </strong> with the same value as a specified <strong>String </strong>. </td> 
+      </tr> 
+      <tr> 
+        <td width="50%"><img alt="public method" src="pubmethod.gif" /><a href="frlrfsystemstringclasscopytotopic.htm">CopyTo </a> 
+          <p>Supported by the .NET Compact Framework. </p></td> 
+        <td width="50%">Copies a specified number of characters from a specified position in this instance to a specified position in an array of Unicode characters. </td> 
+      </tr> 
+      <tr> 
+        <td width="50%"><img alt="public method" src="pubmethod.gif" /><a href="frlrfsystemstringclassendswithtopic.htm">EndsWith </a> 
+          <p>Supported by the .NET Compact Framework. </p></td> 
+        <td width="50%">Determines whether the end of this instance matches the specified <strong>String </strong>. </td> 
+      </tr> 
+      <tr> 
+        <td width="50%"><img alt="public method" src="pubmethod.gif" /><a href="frlrfsystemstringclassequalstopic.htm">Equals </a> 
+          <p>Supported by the .NET Compact Framework. </p></td> 
+        <td width="50%">Overloaded. Overridden. Determines whether two <strong>String </strong> objects have the same value. </td> 
+      </tr> 
+      <tr> 
+        <td width="50%"><img alt="public method" src="pubmethod.gif" /><img alt="static (Shared in Visual Basic)" src="static.gif" /><a href="frlrfsystemstringclassformattopic.htm">Format </a> 
+          <p>Supported by the .NET Compact Framework. </p></td> 
+        <td width="50%">Overloaded. Replaces each format item in a specified <strong>String </strong> with the text equivalent of a corresponding object's value. </td> 
+      </tr> 
+      <tr> 
+        <td width="50%"><img alt="public method" src="pubmethod.gif" /><a href="frlrfsystemstringclassgetenumeratortopic.htm">GetEnumerator </a></td> 
+        <td width="50%">Retrieves an object that can iterate through the individual characters in this instance. </td> 
+      </tr> 
+      <tr> 
+        <td width="50%"><img alt="public method" src="pubmethod.gif" /><a href="frlrfsystemstringclassgethashcodetopic.htm">GetHashCode </a> 
+          <p>Supported by the .NET Compact Framework. </p></td> 
+        <td width="50%">Overridden. Returns the hash code for this instance. </td> 
+      </tr> 
+      <tr> 
+        <td width="50%"><img alt="public method" src="pubmethod.gif" /><a href="frlrfsystemobjectclassgettypetopic.htm">GetType </a> (inherited from <strong>Object </strong>)
+          <p>Supported by the .NET Compact Framework. </p></td> 
+        <td width="50%">Gets the <a href="frlrfsystemtypeclasstopic.htm">Type </a> of the current instance. </td> 
+      </tr> 
+      <tr> 
+        <td width="50%"><img alt="public method" src="pubmethod.gif" /><a href="frlrfsystemstringclassgettypecodetopic.htm">GetTypeCode </a> 
+          <p>Supported by the .NET Compact Framework. </p></td> 
+        <td width="50%">Returns the <a href="frlrfsystemtypecodeclasstopic.htm">TypeCode </a> for class <strong>String </strong>. </td> 
+      </tr> 
+      <tr> 
+        <td width="50%"><img alt="public method" src="pubmethod.gif" /><a href="frlrfsystemstringclassindexoftopic.htm">IndexOf </a> 
+          <p>Supported by the .NET Compact Framework. </p></td> 
+        <td width="50%">Overloaded. Reports the index of the first occurrence of a <strong>String </strong>, or one or more characters, within this instance. </td> 
+      </tr> 
+      <tr> 
+        <td width="50%"><img alt="public method" src="pubmethod.gif" /><a href="frlrfsystemstringclassindexofanytopic.htm">IndexOfAny </a> 
+          <p>Supported by the .NET Compact Framework. </p></td> 
+        <td width="50%">Overloaded. Reports the index of the first occurrence in this instance of any character in a specified array of Unicode characters. </td> 
+      </tr> 
+      <tr> 
+        <td width="50%"><img alt="public method" src="pubmethod.gif" /><a href="frlrfsystemstringclassinserttopic.htm">Insert </a> 
+          <p>Supported by the .NET Compact Framework. </p></td> 
+        <td width="50%">Inserts a specified instance of <strong>String </strong> at a specified index position in this instance. </td> 
+      </tr> 
+      <tr> 
+        <td width="50%"><img alt="public method" src="pubmethod.gif" /><img alt="static (Shared in Visual Basic)" src="static.gif" /><a href="frlrfsystemstringclassinterntopic.htm">Intern </a> 
+          <p>Supported by the .NET Compact Framework. </p></td> 
+        <td width="50%">Retrieves the system's reference to the specified <strong>String </strong>. </td> 
+      </tr> 
+      <tr> 
+        <td width="50%"><img alt="public method" src="pubmethod.gif" /><img alt="static (Shared in Visual Basic)" src="static.gif" /><a href="frlrfsystemstringclassisinternedtopic.htm">IsInterned </a> 
+          <p>Supported by the .NET Compact Framework. </p></td> 
+        <td width="50%">Retrieves a reference to a specified <strong>String </strong>. </td> 
+      </tr> 
+      <tr> 
+        <td width="50%"><img alt="public method" src="pubmethod.gif" /><img alt="static (Shared in Visual Basic)" src="static.gif" /><a href="frlrfsystemstringclassjointopic.htm">Join </a> 
+          <p>Supported by the .NET Compact Framework. </p></td> 
+        <td width="50%">Overloaded. Concatenates a specified separator <strong>String </strong> between each element of a specified <strong>String </strong> array, yielding a single concatenated string. </td> 
+      </tr> 
+      <tr> 
+        <td width="50%"><img alt="public method" src="pubmethod.gif" /><a href="frlrfsystemstringclasslastindexoftopic.htm">LastIndexOf </a> 
+          <p>Supported by the .NET Compact Framework. </p></td> 
+        <td width="50%">Overloaded. Reports the index position of the last occurrence of a specified Unicode character or <strong>String </strong> within this instance. </td> 
+      </tr> 
+      <tr> 
+        <td width="50%"><img alt="public method" src="pubmethod.gif" /><a href="frlrfsystemstringclasslastindexofanytopic.htm">LastIndexOfAny </a> 
+          <p>Supported by the .NET Compact Framework. </p></td> 
+        <td width="50%">Overloaded. Reports the index position of the last occurrence in this instance of one or more characters specified in a Unicode array. </td> 
+      </tr> 
+      <tr> 
+        <td width="50%"><img alt="public method" src="pubmethod.gif" /><a href="frlrfsystemstringclasspadlefttopic.htm">PadLeft </a> 
+          <p>Supported by the .NET Compact Framework. </p></td> 
+        <td width="50%">Overloaded. Right-aligns the characters in this instance, padding on the left with spaces or a specified Unicode character for a specified total length. </td> 
+      </tr> 
+      <tr> 
+        <td width="50%"><img alt="public method" src="pubmethod.gif" /><a href="frlrfsystemstringclasspadrighttopic.htm">PadRight </a> 
+          <p>Supported by the .NET Compact Framework. </p></td> 
+        <td width="50%">Overloaded. Left-aligns the characters in this string, padding on the right with spaces or a specified Unicode character, for a specified total length. </td> 
+      </tr> 
+      <tr> 
+        <td width="50%"><img alt="public method" src="pubmethod.gif" /><a href="frlrfsystemstringclassremovetopic.htm">Remove </a> 
+          <p>Supported by the .NET Compact Framework. </p></td> 
+        <td width="50%">Deletes a specified number of characters from this instance beginning at a specified position. </td> 
+      </tr> 
+      <tr> 
+        <td width="50%"><img alt="public method" src="pubmethod.gif" /><a href="frlrfsystemstringclassreplacetopic.htm">Replace </a> 
+          <p>Supported by the .NET Compact Framework. </p></td> 
+        <td width="50%">Overloaded. Replaces all occurrences of a specified Unicode character or <strong>String </strong> in this instance, with another specified Unicode character or <strong>String </strong>. </td> 
+      </tr> 
+      <tr> 
+        <td width="50%"><img alt="public method" src="pubmethod.gif" /><a href="frlrfsystemstringclasssplittopic.htm">Split </a> 
+          <p>Supported by the .NET Compact Framework. </p></td> 
+        <td width="50%">Overloaded. Identifies the substrings in this instance that are delimited by one or more characters specified in an array, then places the substrings into a <strong>String </strong> array. </td> 
+      </tr> 
+      <tr> 
+        <td width="50%"><img alt="public method" src="pubmethod.gif" /><a href="frlrfsystemstringclassstartswithtopic.htm">StartsWith </a> 
+          <p>Supported by the .NET Compact Framework. </p></td> 
+        <td width="50%">Determines whether the beginning of this instance matches the specified <strong>String </strong>. </td> 
+      </tr> 
+      <tr> 
+        <td width="50%"><img alt="public method" src="pubmethod.gif" /><a href="frlrfsystemstringclasssubstringtopic.htm">Substring </a> 
+          <p>Supported by the .NET Compact Framework. </p></td> 
+        <td width="50%">Overloaded. Retrieves a substring from this instance. </td> 
+      </tr> 
+      <tr> 
+        <td width="50%"><img alt="public method" src="pubmethod.gif" /><a href="frlrfsystemstringclasstochararraytopic.htm">ToCharArray </a> 
+          <p>Supported by the .NET Compact Framework. </p></td> 
+        <td width="50%">Overloaded. Copies the characters in this instance to a Unicode character array. </td> 
+      </tr> 
+      <tr> 
+        <td width="50%"><img alt="public method" src="pubmethod.gif" /><a href="frlrfsystemstringclasstolowertopic.htm">ToLower </a> 
+          <p>Supported by the .NET Compact Framework. </p></td> 
+        <td width="50%">Overloaded. Returns a copy of this <strong>String </strong> in lowercase. </td> 
+      </tr> 
+      <tr> 
+        <td width="50%"><img alt="public method" src="pubmethod.gif" /><a href="frlrfsystemstringclasstostringtopic.htm">ToString </a> 
+          <p>Supported by the .NET Compact Framework. </p></td> 
+        <td width="50%">Overloaded. Overridden. Converts the value of this instance to a <strong>String </strong>. </td> 
+      </tr> 
+      <tr> 
+        <td width="50%"><img alt="public method" src="pubmethod.gif" /><a href="frlrfsystemstringclasstouppertopic.htm">ToUpper </a> 
+          <p>Supported by the .NET Compact Framework. </p></td> 
+        <td width="50%">Overloaded. Returns a copy of this <strong>String </strong> in uppercase. </td> 
+      </tr> 
+      <tr> 
+        <td width="50%"><img alt="public method" src="pubmethod.gif" /><a href="frlrfsystemstringclasstrimtopic.htm">Trim </a> 
+          <p>Supported by the .NET Compact Framework. </p></td> 
+        <td width="50%">Overloaded. Removes all occurrences of a set of specified characters from the beginning and end of this instance. </td> 
+      </tr> 
+      <tr> 
+        <td width="50%"><img alt="public method" src="pubmethod.gif" /><a href="frlrfsystemstringclasstrimendtopic.htm">TrimEnd </a> 
+          <p>Supported by the .NET Compact Framework. </p></td> 
+        <td width="50%">Removes all occurrences of a set of characters specified in an array from the end of this instance. </td> 
+      </tr> 
+      <tr> 
+        <td width="50%"><img alt="public method" src="pubmethod.gif" /><a href="frlrfsystemstringclasstrimstarttopic.htm">TrimStart </a> 
+          <p>Supported by the .NET Compact Framework. </p></td> 
+        <td width="50%">Removes all occurrences of a set of characters specified in an array from the beginning of this instance. </td> 
+      </tr> 
+    </table> 
+    <h4>Public Operators </h4> 
+    <table width="100%" cellspacing="0" class="member"> 
+      <tr> 
+        <td width="50%"><img alt="public operator" src="puboperator.gif" /><img alt="static (Shared in Visual Basic)" src="static.gif" /><a href="frlrfsystemstringclassop_equalitytopic.htm">Equality Operator </a> 
+          <p>Supported by the .NET Compact Framework. </p></td> 
+        <td width="50%">Determines whether two specified <strong>String </strong> objects have the same value. </td> 
+      </tr> 
+      <tr> 
+        <td width="50%"><img alt="public operator" src="puboperator.gif" /><img alt="static (Shared in Visual Basic)" src="static.gif" /><a href="frlrfsystemstringclassop_inequalitytopic.htm">Inequality Operator </a> 
+          <p>Supported by the .NET Compact Framework. </p></td> 
+        <td width="50%">Determines whether two specified <strong>String </strong> objects have different values. </td> 
+      </tr> 
+    </table> 
+    <h4>Protected Methods </h4> 
+    <table width="100%" cellspacing="0" class="member"> 
+      <tr> 
+        <td width="50%"><img alt="protected method" src="protmethod.gif" /><a href="frlrfsystemobjectclassfinalizetopic.htm">Finalize </a> (inherited from <strong>Object </strong>)
+          <p>Supported by the .NET Compact Framework. </p></td> 
+        <td width="50%">Overridden. Allows an <a href="frlrfsystemobjectclasstopic.htm">Object </a> to attempt to free resources and perform other cleanup operations before the <strong>Object </strong> is reclaimed by garbage collection.
+          <p>In C# and C++, finalizers are expressed using destructor syntax. </p></td> 
+      </tr> 
+      <tr> 
+        <td width="50%"><img alt="protected method" src="protmethod.gif" /><a href="frlrfsystemobjectclassmemberwiseclonetopic.htm">MemberwiseClone </a> (inherited from <strong>Object </strong>)
+          <p>Supported by the .NET Compact Framework. </p></td> 
+        <td width="50%">Creates a shallow copy of the current <a href="frlrfsystemobjectclasstopic.htm">Object </a>. </td> 
+      </tr> 
+    </table> 
+    <h4>See Also </h4> 
+    <p><a href="frlrfsystemstringclasstopic.htm">String Class </a> | <a href="frlrfsystem.htm">System Namespace </a>| <a href="ms-help://MS.VSCC.2003/MS.MSDNQTR.2003OCT.1033/vcmex/html/vcconMCOverview.htm">Managed Extensions for C++ Programming </a></p> 
+    <p><em>Syntax based on .NET Framework version 1.1. <br /> 
+      Documentation version 1.1.1. </em> </p> 
+	  <div id="footer">
+    <p><a href="mailto:netfwsdk@microsoft.com?subject=Documentation Feedback (v1.1): systemstringmembers.rtf, String Members">Send comments on this topic. </a> </p> 
+    <p>&copy; Microsoft Corporation. All rights reserved. </p> 
+	</div>
+  </div> 
+</div> 
+</body>
+</html>

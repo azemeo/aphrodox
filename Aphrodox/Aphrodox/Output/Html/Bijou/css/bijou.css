@@ -1,0 +1,66 @@
+/* standard stuff in almost every page I create */
+body {
+	margin: 0;
+	padding: 0;
+	color: #000000;
+	background-color: #FFFFFF;
+}
+* {
+	margin: 0;
+	padding: 0;
+}
+img {
+	border: 0 none;
+	vertical-align: text-top;
+}
+
+/* tailor HTML stuff */
+body {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 70%;
+}
+#header {
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+	border-bottom-color: #999999;
+	background-color: #99CCFF;
+	width: 100%;
+}
+#innerHeader {
+	padding: 0.5em 1% 0.5em 1%;
+}
+.imgSeeAlso {
+	margin-right: 0.4em;
+}
+#runningHead {
+	font-style: italic;
+}
+#header h1 {
+	font-size: 1.2em;
+	font-weight: bold;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+}
+#client {
+	padding: 0.8em 1% 0.8em 3%;
+}
+#innerClient {
+}
+#client h4 {
+	margin: 1em 0 0.5em -2%;
+	font-size: 1em;
+}
+.member {
+	border-collapse: collapse;
+	margin: 0.5em 0 0 0;
+}
+.member td {
+	border: 1px solid #999999;
+	padding: 0.5em 1% 0.5em 1%;
+	vertical-align: baseline;
+}
+#footer {
+	border-top: 1px solid #999999;
+	margin: 1em 0 0 0;
+	padding: 1em 0 0 0;
+	font-style: italic;
+}
