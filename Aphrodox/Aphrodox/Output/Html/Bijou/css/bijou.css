@@ -63,4 +63,9 @@ body {
 	margin: 1em 0 0 0;
 	padding: 1em 0 0 0;
 	font-style: italic;
+}#seeAlsoPopup {
+	display: none;
+}
+.memberIcon {
+	margin-right: 0.5em;
 }

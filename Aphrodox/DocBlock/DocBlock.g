@@ -3,102 +3,76 @@ options {
 	namespace = "Aphrodox.DocBlock";
 }
 
-{
-	using System.Xml;
-}
 class DocBlockParser extends Parser;
-options { buildAST = true; k = 1; }
+options {
+	buildAST = true;
+}
 
-parse returns [Documentation doc] {
+parse returns [Documentation doc]
+{
 	doc = new Documentation();
 }
-	: docBlock[doc] {
-	}
+	:	docBlock[doc]
 	;
 
 docBlock[Documentation doc]
-	: (summary[doc.Summary])?
-	;
-
-summary[XmlDocumentFragment summaryFragment]
-	:	x:WORD (SPACE WORD)*
+	:	TEXT
 	{
-		summaryFragment.AppendChild(summaryFragment.OwnerDocument.CreateTextNode(x.getText()));
-		Console.WriteLine( "Nih: " + #summary.getText() + #summary.getNumberOfChildren() + "x" );
-		Console.WriteLine( "Mah: " + #summary.ToStringList() );
+		doc.Summary.InnerText = #docBlock.ToString();
 	}
-	;
-	
-remarks
-	:	"Dummy"
-	;
-
-tagBlock
-	:	"another dummy"
 	;
 
 class DocBlockLexer extends Lexer;
-options {
-	k = 4;
-	charVocabulary = '\u0000'..'\u00FF';
-}
+options { k = 1; }
 
-protected
-NEWLINE
-    :	(
-			options { generateAmbigWarnings = false; }
-		:	'\r' '\n'   { newline(); }	// DOS
-		|   '\n'        { newline(); }	// UNIX
-		|	'\r'		{ newline(); }	// MAC
-		)
-    ;
-
-protected
-SPACE
-	:	(
-			' '
-		|	'\u0009'	// tab
-		|	'\u000B'	// vertical tab
-		|	'\u000C'	// form feed
-		)+
+TEXT
+	:	(WHITESPACE!)? INNER_TEXT (WHITESPACE!)?
 	;
 
-protected
-WHITESPACE
-	:	SPACE
-	|	NEWLINE;
+protected INNER_TEXT
+	:	WORD (WHITESPACE)? (INNER_TEXT)?
+	;
+	
+protected WORD
+	:	WORD_CHAR (WORD_CHAR)*
+	;
 
-protected
-IGNORED_WHITESPACE
+protected WORD_CHAR
+	:	LETTER | PUNCTUATION | ACCENT
+	;
+
+protected LETTER
+	:	'A'..'Z' | 'a'..'z'
+	;
+
+protected PUNCTUATION
+	:	'.' | '!' | '\''
+	;
+	
+protected ACCENT
+	:	'\u00C0'..'\u0259'
+	;
+
+protected WHITESPACE
+	:	SPACE
+	;
+
+protected COLLAPSED_WHITESPACE
 	:	WHITESPACE
-	|	NEWLINE
 	{
-		$setType(Token.SKIP);
+		$setText(" ");
 	}
 	;
 
-protected
-COLLAPSED_SPACE
-	:	SPACE
-	{
-	}
+protected SPACE
+	:	' ' | '\t'
 	;
 
-TEXT_FRAGMENT
-	:	WORD (SPACE | WORD)*
+protected NL
+	:	(DOS_NL) => DOS_NL | UNIX_NL | MAC_NL
 	;
 
-protected
-WORD
-/*	:	(~('<'|'>'|'@'|' '|'\r'|'\n'|'\t'|'\u000B'|'\u000C'))* */
-	:	('A'..'Z'|'a'..'z'|'!')+
-	;
+protected DOS_NL	:	"\r\n"	{ newline(); };
+protected UNIX_NL	:	'\n'	{ newline(); };
+protected MAC_NL	:	'\r'	{ newline(); };
 
-CODE
-	:	"<c>"! ( options { greedy = false; } : . )* "</c>"!
-	|	"<code>"! ( options { greedy = false; } : . )* "</code>"!
-	;
-
-TAG
-	:	'@' ('a'..'z')+
-	;
