@@ -317,7 +317,7 @@ static void buildGroupListFiltered(Entry *root,bool additional)
   }
 }
 
-static void buildGroupList(Entry *root)
+void buildGroupList(Entry *root)
 {
   // first process the @defgroups blocks
   buildGroupListFiltered(root,FALSE);
@@ -348,7 +348,7 @@ static void organizeSubGroupsFiltered(Entry *root,bool additional)
   }
 }
 
-static void organizeSubGroups(Entry *root)
+void organizeSubGroups(Entry *root)
 {
   //printf("Defining groups\n");
   // first process the @defgroups blocks
@@ -360,7 +360,7 @@ static void organizeSubGroups(Entry *root)
 
 //----------------------------------------------------------------------
 
-static void buildFileList(Entry *root)
+void buildFileList(Entry *root)
 {
   if (((root->section==Entry::FILEDOC_SEC) ||
         ((root->section & Entry::FILE_MASK) && Config_getBool("EXTRACT_ALL"))) &&
@@ -868,7 +868,7 @@ static void addClassToContext(Entry *root)
 //----------------------------------------------------------------------
 // build a list of all classes mentioned in the documentation
 // and all classes that have a documentation block before their definition.
-static void buildClassList(Entry *root)
+void buildClassList(Entry *root)
 {
   if (
         ((root->section & Entry::COMPOUND_MASK) || 
@@ -885,7 +885,7 @@ static void buildClassList(Entry *root)
   }
 }
 
-static void buildClassDocList(Entry *root)
+void buildClassDocList(Entry *root)
 {
   if (
        (root->section & Entry::COMPOUNDDOC_MASK) && !root->name.isEmpty()
@@ -933,7 +933,7 @@ Definition *buildScopeFromQualifiedName(const QCString name,int level)
   return prevScope;
 }
 
-static void resolveClassNestingRelations()
+void resolveClassNestingRelations()
 {
   ClassSDict::Iterator cli(Doxygen::classSDict);
   for (cli.toFirst();cli.current();++cli) cli.current()->visited=FALSE;
@@ -984,7 +984,7 @@ static void resolveClassNestingRelations()
 //----------------------------------------------------------------------
 // build a list of all namespaces mentioned in the documentation
 // and all namespaces that have a documentation block before their definition.
-static void buildNamespaceList(Entry *root)
+void buildNamespaceList(Entry *root)
 {
   if (
        (root->section==Entry::NAMESPACE_SEC ||
@@ -1108,7 +1108,7 @@ static void buildNamespaceList(Entry *root)
 
 //----------------------------------------------------------------------
 
-static void findUsingDirectives(Entry *root)
+void findUsingDirectives(Entry *root)
 {
   if (root->section==Entry::USINGDIR_SEC)
   {
@@ -1395,7 +1395,7 @@ static void findUsingDeclImports(Entry *root)
 
 //----------------------------------------------------------------------
 
-static void findIncludedUsingDirectives()
+void findIncludedUsingDirectives()
 {
   // first mark all files as not visited
   FileNameListIterator fnli(Doxygen::inputNameList); 
@@ -6530,7 +6530,7 @@ static void findDefineDocumentation(Entry *root)
 
 //----------------------------------------------------------------------------
 
-static void findDirDocumentation(Entry *root)
+void findDirDocumentation(Entry *root)
 {
   if (root->section == Entry::DIRDOC_SEC)
   {
@@ -7749,7 +7749,7 @@ static void readAliases()
 //----------------------------------------------------------------------------
 // print the usage of doxygen
 
-static void usage(const char *name)
+void usage(const char *name)
 {
   msg("Doxygen version %s\nCopyright Dimitri van Heesch 1997-2005\n\n",versionString);
   msg("You can use doxygen in a number of ways:\n\n");
