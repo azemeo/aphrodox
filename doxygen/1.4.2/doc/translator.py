@@ -16,7 +16,7 @@
   Originally, the script was written in Perl and was known as translator.pl.
   The last Perl version was dated 2002/05/21 (plus some later corrections)
 
-  $Id: translator.py,v 1.37 2005/03/15 19:18:40 dimitri Exp $
+  $Id: translator.py,v 1.38 2005/03/28 13:38:51 dimitri Exp $
   
                                          Petr Prikryl (prikrylp@skil.cz)
                                

@@ -1,6 +1,6 @@
 /******************************************************************************
  *
- * $Id: baseiterator.h,v 1.116 2005/03/15 19:18:39 dimitri Exp $
+ * $Id: baseiterator.h,v 1.117 2005/03/28 13:38:50 dimitri Exp $
  *
  *
  * Copyright (C) 1997-2005 by Dimitri van Heesch.

@@ -1,6 +1,6 @@
 /******************************************************************************
  *
- * $Id: paramhandler.h,v 1.116 2005/03/15 19:18:40 dimitri Exp $
+ * $Id: paramhandler.h,v 1.117 2005/03/28 13:38:51 dimitri Exp $
  *
  *
  * Copyright (C) 1997-2005 by Dimitri van Heesch.
