@@ -190,9 +190,9 @@ void statistics()
 
 
 
-static void addMemberDocs(Entry *root,MemberDef *md, const char *funcDecl,
+void addMemberDocs(Entry *root,MemberDef *md, const char *funcDecl,
                    ArgumentList *al,bool over_load,NamespaceSDict *nl=0);
-static void findMember(Entry *root,
+void findMember(Entry *root,
                        QCString funcDecl,
                        bool overloaded,
                        bool isFunc
@@ -204,7 +204,7 @@ QCString Doxygen::htmlFileExtension;
 
 //----------------------------------------------------------------------------
 
-static void addRelatedPage(Entry *root)
+void addRelatedPage(Entry *root)
 {
   GroupDef *gd=0;
   QListIterator<Grouping> gli(*root->groups);
@@ -250,7 +250,7 @@ static void addRelatedPage(Entry *root)
   }
 }
 
-static void buildGroupListFiltered(Entry *root,bool additional)
+void buildGroupListFiltered(Entry *root,bool additional)
 {
   if (root->section==Entry::GROUPDOC_SEC && !root->name.isEmpty())
   {
@@ -325,7 +325,7 @@ void buildGroupList(Entry *root)
   buildGroupListFiltered(root,TRUE);
 }
 
-static void organizeSubGroupsFiltered(Entry *root,bool additional)
+void organizeSubGroupsFiltered(Entry *root,bool additional)
 {
   if (root->section==Entry::GROUPDOC_SEC && !root->name.isEmpty())
   {
@@ -435,7 +435,7 @@ void buildFileList(Entry *root)
   }
 }
 
-static void addIncludeFile(ClassDef *cd,FileDef *ifd,Entry *root)
+void addIncludeFile(ClassDef *cd,FileDef *ifd,Entry *root)
 {
   if ( 
       (!root->doc.stripWhiteSpace().isEmpty() || 
@@ -627,7 +627,7 @@ ArgumentList *getTemplateArgumentsFromName(
   return ali.current();
 }
 
-static void addClassToContext(Entry *root)
+void addClassToContext(Entry *root)
 {
 //  QCString fullName=removeRedundantWhiteSpace(root->name);
 //
@@ -1217,7 +1217,7 @@ void findUsingDirectives(Entry *root)
 
 //----------------------------------------------------------------------
 
-static void findUsingDeclarations(Entry *root)
+void findUsingDeclarations(Entry *root)
 {
   if (root->section==Entry::USINGDECL_SEC &&
       !(root->parent->section&Entry::COMPOUND_MASK) // not a class/struct member
@@ -1310,7 +1310,7 @@ static void findUsingDeclarations(Entry *root)
 
 //----------------------------------------------------------------------
 
-static void findUsingDeclImports(Entry *root)
+void findUsingDeclImports(Entry *root)
 {
   if (root->section==Entry::USINGDECL_SEC &&
       (root->parent->section&Entry::COMPOUND_MASK) // in a class/struct member
@@ -1846,7 +1846,7 @@ done:
 // Searches the Entry tree for Variable documentation sections.
 // If found they are stored in their class or in the global list.
 
-static void buildVarList(Entry *root)
+void buildVarList(Entry *root)
 {
   if (!root->name.isEmpty() &&
       (root->type.isEmpty() || compoundKeywordDict.find(root->type)==0) &&
@@ -2060,7 +2060,7 @@ nextMember:
 // Searches the Entry tree for Function sections.
 // If found they are stored in their class or in the global list.
 
-static void addMethodToClass(Entry *root,ClassDef *cd,
+void addMethodToClass(Entry *root,ClassDef *cd,
                   const QCString &rname,/*const QCString &scope,*/bool isFriend)
 {
   int l,i;
@@ -2210,7 +2210,7 @@ static void addMethodToClass(Entry *root,ClassDef *cd,
 }
 
 
-static void buildFunctionList(Entry *root)
+void buildFunctionList(Entry *root)
 {
   if (root->section==Entry::FUNCTION_SEC)
   {
@@ -2570,7 +2570,7 @@ static void buildFunctionList(Entry *root)
 
 //----------------------------------------------------------------------
 
-static void findFriends()
+void findFriends()
 {
   //printf("findFriends()\n");
   MemberNameSDict::Iterator fnli(Doxygen::functionNameSDict);
@@ -2654,7 +2654,7 @@ static void findFriends()
 
 //----------------------------------------------------------------------
 
-static void transferArgumentDocumentation(ArgumentList *decAl,ArgumentList *defAl)
+void transferArgumentDocumentation(ArgumentList *decAl,ArgumentList *defAl)
 {
   if (decAl && defAl)
   {
@@ -2681,7 +2681,7 @@ static void transferArgumentDocumentation(ArgumentList *decAl,ArgumentList *defA
   }
 }
 
-static void transferFunctionDocumentation()
+void transferFunctionDocumentation()
 {
   //printf("transferFunctionDocumentation()\n");
 
@@ -2825,7 +2825,7 @@ static void transferFunctionDocumentation()
 
 //----------------------------------------------------------------------
 
-static void transferFunctionReferences()
+void transferFunctionReferences()
 {
   MemberNameSDict::Iterator mnli(Doxygen::functionNameSDict);
   MemberName *mn;
@@ -2909,7 +2909,7 @@ static void transferFunctionReferences()
 
 //----------------------------------------------------------------------
 
-static void transferRelatedFunctionDocumentation()
+void transferRelatedFunctionDocumentation()
 {
   // find match between function declaration and definition for 
   // related functions
@@ -3122,7 +3122,7 @@ static bool findClassRelation(
                           );
 
 
-static void findUsedClassesForClass(Entry *root,
+void findUsedClassesForClass(Entry *root,
                            Definition *context,
                            ClassDef *masterCd,
                            ClassDef *instanceCd,
@@ -3269,7 +3269,7 @@ static void findUsedClassesForClass(Entry *root,
   }
 }
 
-static void findBaseClassesForClass(
+void findBaseClassesForClass(
       Entry *root,
       Definition *context,
       ClassDef *masterCd,
@@ -3688,7 +3688,7 @@ static bool isClassSection(Entry *root)
 
 /*! Builds a dictionary of all entry nodes in the tree starting with \a root
  */
-static void findClassEntries(Entry *root)
+void findClassEntries(Entry *root)
 {
   if (isClassSection(root))
   {
@@ -3707,7 +3707,7 @@ static void findClassEntries(Entry *root)
  *  exists as inheritance relations only. These instances will be
  *  added to the template they are derived from.
  */
-static void findInheritedTemplateInstances()
+void findInheritedTemplateInstances()
 {
   ClassSDict::Iterator cli(Doxygen::classSDict);
   for (cli.toFirst();cli.current();++cli) cli.current()->visited=FALSE;
@@ -3728,7 +3728,7 @@ static void findInheritedTemplateInstances()
   }
 }
 
-static void findUsedTemplateInstances()
+void findUsedTemplateInstances()
 {
   ClassSDict::Iterator cli(Doxygen::classSDict);
   for (cli.toFirst();cli.current();++cli) cli.current()->visited=FALSE;
@@ -3748,7 +3748,7 @@ static void findUsedTemplateInstances()
   }
 }
 
-static void computeClassRelations()
+void computeClassRelations()
 {
   ClassSDict::Iterator cli(Doxygen::classSDict);
   for (cli.toFirst();cli.current();++cli) cli.current()->visited=FALSE;
@@ -3783,7 +3783,7 @@ static void computeClassRelations()
   }
 }
 
-static void computeTemplateClassRelations()
+void computeTemplateClassRelations()
 {
   QDictIterator<Entry> edi(classEntries);
   Entry *root;
@@ -3860,7 +3860,7 @@ static void computeTemplateClassRelations()
 //-----------------------------------------------------------------------
 // compute the references (anchors in HTML) for each function in the file
 
-static void computeMemberReferences()
+void computeMemberReferences()
 {
   ClassSDict::Iterator cli(Doxygen::classSDict);
   ClassDef *cd=0;
@@ -3895,7 +3895,7 @@ static void computeMemberReferences()
 
 //----------------------------------------------------------------------
 
-static void addListReferences()
+void addListReferences()
 {
   MemberNameSDict::Iterator mnli(Doxygen::memberNameSDict);
   MemberName *mn=0;
@@ -3968,7 +3968,7 @@ static void addListReferences()
 // set the function declaration of the member to `funcDecl'. If the boolean 
 // over_load is set the standard overload text is added. 
 
-static void addMemberDocs(Entry *root,
+void addMemberDocs(Entry *root,
                    MemberDef *md, const char *funcDecl,
                    ArgumentList *al,
                    bool over_load,
@@ -4283,7 +4283,7 @@ static QCString substituteTemplatesInString(
   return dst;
 }
 
-static void substituteTemplatesInArgList(
+void substituteTemplatesInArgList(
                   const QList<ArgumentList> &srcTempArgLists,
                   const QList<ArgumentList> &dstTempArgLists,
                   ArgumentList *src,
@@ -4332,7 +4332,7 @@ static void substituteTemplatesInArgList(
  * The boolean \a isFunc is a hint that indicates that this is a function
  * instead of a variable or typedef.
  */
-static void findMember(Entry *root,
+void findMember(Entry *root,
                        QCString funcDecl,
                        bool overloaded,
                        bool isFunc
@@ -5269,7 +5269,7 @@ localObjCMethod:
 // find the members corresponding to the different documentation blocks
 // that are extracted from the sources.
 
-static void findMemberDocumentation(Entry *root)
+void findMemberDocumentation(Entry *root)
 {
   int i=-1,l;
   Debug::print(Debug::FindMembers,0,
@@ -5383,7 +5383,7 @@ static void findMemberDocumentation(Entry *root)
 
 //----------------------------------------------------------------------
 
-static void findObjCMethodDefinitions(Entry *root)
+void findObjCMethodDefinitions(Entry *root)
 {
   EntryListIterator eli(*root->sublist);
   Entry *objCImpl;
@@ -5410,7 +5410,7 @@ static void findObjCMethodDefinitions(Entry *root)
 //----------------------------------------------------------------------
 // find and add the enumeration to their classes, namespaces or files
 
-static void findEnums(Entry *root)
+void findEnums(Entry *root)
 {
   if (root->section==Entry::ENUM_SEC)
     // non anonymous enumeration
@@ -5642,7 +5642,7 @@ static void findEnums(Entry *root)
 //----------------------------------------------------------------------
 // find the documentation blocks for the enumerations
 
-static void findEnumDocumentation(Entry *root)
+void findEnumDocumentation(Entry *root)
 {
   if (root->section==Entry::ENUMDOC_SEC
       && !root->name.isEmpty()
@@ -5755,7 +5755,7 @@ static void findEnumDocumentation(Entry *root)
 
 // seach for each enum (member or function) in mnl if it has documented 
 // enum values.
-static void findDEV(const MemberNameSDict &mnsd)
+void findDEV(const MemberNameSDict &mnsd)
 {
   MemberName *mn;
   MemberNameSDict::Iterator mnli(mnsd);
@@ -5790,7 +5790,7 @@ static void findDEV(const MemberNameSDict &mnsd)
 
 // seach for each enum (member or function) if it has documented enum 
 // values.
-static void findDocumentedEnumValues()
+void findDocumentedEnumValues()
 {
   findDEV(Doxygen::memberNameSDict);
   findDEV(Doxygen::functionNameSDict); 
@@ -5802,7 +5802,7 @@ static void findDocumentedEnumValues()
 // the members that override the implementation of `m' are searched and
 // the member that `m' overrides is searched.
 
-static void computeMemberRelations()
+void computeMemberRelations()
 {
   MemberNameSDict::Iterator mnli(Doxygen::memberNameSDict);
   MemberName *mn;
@@ -5857,7 +5857,7 @@ static void computeMemberRelations()
 
 
 //----------------------------------------------------------------------------
-//static void computeClassImplUsageRelations()
+//void computeClassImplUsageRelations()
 //{
 //  ClassDef *cd;
 //  ClassSDict::Iterator cli(Doxygen::classSDict);
@@ -5869,7 +5869,7 @@ static void computeMemberRelations()
 
 //----------------------------------------------------------------------------
 
-static void createTemplateInstanceMembers()
+void createTemplateInstanceMembers()
 {
   ClassSDict::Iterator cli(Doxygen::classSDict);
   ClassDef *cd;
@@ -5895,7 +5895,7 @@ static void createTemplateInstanceMembers()
 
 // builds the list of all members for each class
 
-static void buildCompleteMemberLists()
+void buildCompleteMemberLists()
 {
   ClassDef *cd;
   // merge members of categories into the class they extend
@@ -5935,7 +5935,7 @@ static void buildCompleteMemberLists()
 
 //----------------------------------------------------------------------------
 
-static void generateFileSources()
+void generateFileSources()
 {
   if (documentedHtmlFiles==0) return;
   
@@ -5967,7 +5967,7 @@ static void generateFileSources()
 
 //----------------------------------------------------------------------------
 
-static void generateFileDocs()
+void generateFileDocs()
 {
   if (documentedHtmlFiles==0) return;
   
@@ -5994,7 +5994,7 @@ static void generateFileDocs()
 
 //----------------------------------------------------------------------------
 
-static void addSourceReferences()
+void addSourceReferences()
 {
   // add source references for class definitions
   ClassSDict::Iterator cli(Doxygen::classSDict);
@@ -6072,7 +6072,7 @@ static void addSourceReferences()
 //----------------------------------------------------------------------------
 // generate the documentation of all classes
   
-static void generateClassList(ClassSDict &classSDict)
+void generateClassList(ClassSDict &classSDict)
 {
   ClassSDict::Iterator cli(classSDict);
   for ( ; cli.current() ; ++cli )
@@ -6099,7 +6099,7 @@ static void generateClassList(ClassSDict &classSDict)
   }
 }
 
-static void generateClassDocs()
+void generateClassDocs()
 {
   // write the installdox script if necessary
   if (Config_getBool("GENERATE_HTML") && 
@@ -6137,7 +6137,7 @@ static void generateClassDocs()
 
 //----------------------------------------------------------------------------
 
-static void inheritDocumentation()
+void inheritDocumentation()
 {
   MemberNameSDict::Iterator mnli(Doxygen::memberNameSDict);
   MemberName *mn;
@@ -6174,7 +6174,7 @@ static void inheritDocumentation()
 
 //----------------------------------------------------------------------------
 
-static void combineUsingRelations()
+void combineUsingRelations()
 {
   // for each file
   FileNameListIterator fnli(Doxygen::inputNameList);
@@ -6213,7 +6213,7 @@ static void combineUsingRelations()
 
 //----------------------------------------------------------------------------
   
-static void addMembersToMemberGroup()
+void addMembersToMemberGroup()
 {
   // for each class
   ClassSDict::Iterator cli(Doxygen::classSDict);
@@ -6252,7 +6252,7 @@ static void addMembersToMemberGroup()
 
 //----------------------------------------------------------------------------
 
-static void distributeMemberGroupDocumentation()
+void distributeMemberGroupDocumentation()
 {
   // for each class
   ClassSDict::Iterator cli(Doxygen::classSDict);
@@ -6291,7 +6291,7 @@ static void distributeMemberGroupDocumentation()
 
 //----------------------------------------------------------------------------
 
-static void findSectionsInDocumentation()
+void findSectionsInDocumentation()
 {
   // for each class
   ClassSDict::Iterator cli(Doxygen::classSDict);
@@ -6336,7 +6336,7 @@ static void findSectionsInDocumentation()
   if (Doxygen::mainPage) Doxygen::mainPage->findSectionsInDocumentation();
 }
 
-static void flushCachedTemplateRelations()
+void flushCachedTemplateRelations()
 {
   // remove all references to classes from the cache
   // as there can be new template instances in the inheritance path
@@ -6387,7 +6387,7 @@ static void flushCachedTemplateRelations()
 
 //----------------------------------------------------------------------------
 
-static void findDefineDocumentation(Entry *root)
+void findDefineDocumentation(Entry *root)
 {
   if ((root->section==Entry::DEFINEDOC_SEC ||
        root->section==Entry::DEFINE_SEC) && !root->name.isEmpty()
@@ -6587,7 +6587,7 @@ void findDirDocumentation(Entry *root)
 //----------------------------------------------------------------------------
 // create a (sorted) list of separate documentation pages
 
-static void buildPageList(Entry *root)
+void buildPageList(Entry *root)
 {
   if (root->section == Entry::PAGEDOC_SEC)
   {
@@ -6614,7 +6614,7 @@ static void buildPageList(Entry *root)
   }
 }
 
-static void findMainPage(Entry *root)
+void findMainPage(Entry *root)
 {
   if (root->section == Entry::MAINPAGEDOC_SEC)
   {
@@ -6653,7 +6653,7 @@ static void findMainPage(Entry *root)
   }
 }
 
-static void computePageRelations(Entry *root)
+void computePageRelations(Entry *root)
 {
   if ((root->section==Entry::PAGEDOC_SEC || 
        root->section==Entry::MAINPAGEDOC_SEC
@@ -6688,7 +6688,7 @@ static void computePageRelations(Entry *root)
   }
 }
 
-static void checkPageRelations()
+void checkPageRelations()
 {
   PageSDict::Iterator pdi(*Doxygen::pageSDict);
   PageDef *pd=0;
@@ -6711,7 +6711,7 @@ static void checkPageRelations()
 
 //----------------------------------------------------------------------------
 
-static void resolveUserReferences()
+void resolveUserReferences()
 {
   QDictIterator<SectionInfo> sdi(Doxygen::sectionDict);
   SectionInfo *si;
@@ -6782,7 +6782,7 @@ static void resolveUserReferences()
 // generate all separate documentation pages
 
 
-static void generatePageDocs()
+void generatePageDocs()
 {
   //printf("documentedPages=%d real=%d\n",documentedPages,Doxygen::pageSDict->count());
   if (documentedPages==0) return;
@@ -6801,7 +6801,7 @@ static void generatePageDocs()
 //----------------------------------------------------------------------------
 // create a (sorted) list & dictionary of example pages
 
-static void buildExampleList(Entry *root)
+void buildExampleList(Entry *root)
 {
   if (root->section == Entry::EXAMPLE_SEC)
   {
@@ -6840,7 +6840,7 @@ static void buildExampleList(Entry *root)
 //----------------------------------------------------------------------------
 // generate the example documentation 
 
-static void generateExampleDocs()
+void generateExampleDocs()
 {
   outputList->disable(OutputGenerator::Man);
   PageSDict::Iterator pdi(*Doxygen::exampleSDict);
@@ -6870,7 +6870,7 @@ static void generateExampleDocs()
 //----------------------------------------------------------------------------
 // generate module pages
 
-static void generateGroupDocs()
+void generateGroupDocs()
 {
   GroupSDict::Iterator gli(Doxygen::groupSDict);
   GroupDef *gd;
@@ -6885,7 +6885,7 @@ static void generateGroupDocs()
 
 //----------------------------------------------------------------------------
 
-//static void generatePackageDocs()
+//void generatePackageDocs()
 //{
 //  writePackageIndex(*outputList);
 //  
@@ -6903,7 +6903,7 @@ static void generateGroupDocs()
 //----------------------------------------------------------------------------
 // generate module pages
 
-static void generateNamespaceDocs()
+void generateNamespaceDocs()
 {
   writeNamespaceIndex(*outputList);
   
@@ -6962,7 +6962,7 @@ static QCString fixSlashes(QCString &s)
 //----------------------------------------------------------------------------
 // generate files for the search engine
 
-//static void generateSearchIndex()
+//void generateSearchIndex()
 //{
 //  if (Config_getBool("SEARCHENGINE") && Config_getBool("GENERATE_HTML"))
 //  {
@@ -7104,7 +7104,7 @@ static bool openOutputFile(const char *outFile,QFile &f)
  *  If the \a shortList parameter is TRUE a configuration file without
  *  comments will be generated.
  */
-static void generateConfigFile(const char *configFile,bool shortList,
+void generateConfigFile(const char *configFile,bool shortList,
                                bool updateOnly=FALSE)
 {
   QFile f;
@@ -7152,7 +7152,7 @@ static void generateConfigFile(const char *configFile,bool shortList,
 
 //----------------------------------------------------------------------------
 
-static void readTagFile(Entry *root,const char *tl)
+void readTagFile(Entry *root,const char *tl)
 {
   QCString tagLine = tl;
   QCString fileName;
@@ -7218,7 +7218,7 @@ static bool patternMatch(QFileInfo *fi,QStrList *patList)
 // reads a file into an array and filters out any 0x00 and 0x06 bytes,
 // because these are special for the parser.
 
-static void copyAndFilterFile(const char *fileName,BufStr &dest)
+void copyAndFilterFile(const char *fileName,BufStr &dest)
 {
   // try to open file
   int size=0;
@@ -7284,7 +7284,7 @@ static void copyAndFilterFile(const char *fileName,BufStr &dest)
 }
 
 //----------------------------------------------------------------------------
-static void copyStyleSheet()
+void copyStyleSheet()
 {
   QCString &htmlStyleSheet = Config_getString("HTML_STYLESHEET");
   if (!htmlStyleSheet.isEmpty())
@@ -7318,7 +7318,7 @@ static void copyStyleSheet()
 
 #ifdef USE_TMP_FILE
 
-static void readFiles(const QCString &tmpFile)
+void readFiles(const QCString &tmpFile)
 {
   QFile outFile(tmpFile);
   if (outFile.open(IO_WriteOnly))
@@ -7370,7 +7370,7 @@ static void readFiles(const QCString &tmpFile)
 // The name of the file is written in front of the file's contents and
 // between 0x06 markers
 
-static void readFiles(BufStr &output)
+void readFiles(BufStr &output)
 {
   QCString *s=inputFiles.first();
   while (s)
@@ -7596,7 +7596,7 @@ static int readFileOrDirectory(const char *s,
 
 //----------------------------------------------------------------------------
 
-static void readFormulaRepository()
+void readFormulaRepository()
 {
   QFile f(Config_getString("HTML_OUTPUT")+"/formula.repository");
   if (f.open(IO_ReadOnly)) // open repository
@@ -7660,7 +7660,7 @@ static QCString expandAliasesRec(const QCString s)
   return result;
 }
 
-static void expandAliases()
+void expandAliases()
 {
   QDictIterator<QCString> adi(Doxygen::aliasDict);
   QCString *s;
@@ -7673,7 +7673,7 @@ static void expandAliases()
 
 //----------------------------------------------------------------------------
 
-static void escapeAliases()
+void escapeAliases()
 {
   QDictIterator<QCString> adi(Doxygen::aliasDict);
   QCString *s;
@@ -7708,7 +7708,7 @@ static void escapeAliases()
 
 //----------------------------------------------------------------------------
 
-static void readAliases()
+void readAliases()
 { 
   // add aliases to a dictionary
   Doxygen::aliasDict.setAutoDelete(TRUE);
