@@ -16,7 +16,7 @@ change the language.doc, make the changes here and inside maintainers.txt.
  * Documents produced by Doxygen are derivative works derived from the
  * input used in their production; they are not affected by this license.
  *
- * $Id: language.tpl,v 1.47 2005/03/15 19:18:40 dimitri Exp $
+ * $Id: language.tpl,v 1.48 2005/03/28 13:38:51 dimitri Exp $
  */
 /*! \page langhowto Internationalization
 

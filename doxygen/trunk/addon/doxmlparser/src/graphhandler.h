@@ -1,6 +1,6 @@
 /******************************************************************************
  *
- * $Id: graphhandler.h,v 1.109 2005/03/15 19:18:40 dimitri Exp $
+ * $Id: graphhandler.h,v 1.110 2005/03/28 13:38:51 dimitri Exp $
  *
  *
  * Copyright (C) 1997-2005 by Dimitri van Heesch.

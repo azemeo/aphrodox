@@ -1,6 +1,6 @@
 /******************************************************************************
  *
- * $Id: doxmlintf.h,v 1.112 2005/03/15 19:18:40 dimitri Exp $
+ * $Id: doxmlintf.h,v 1.113 2005/03/28 13:38:51 dimitri Exp $
  *
  *
  * Copyright (C) 1997-2005 by Dimitri van Heesch.
